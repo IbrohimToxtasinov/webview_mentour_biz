@@ -110,7 +110,7 @@ class _MyAppState extends State<MyApp> {
               locale: context.locale,
               debugShowCheckedModeBanner: false,
               onGenerateRoute: AppRouter.generateRoute,
-              initialRoute: AppRouterNames.splashRoute,
+              initialRoute: AppRouterNames.homeRoute,
             );
           },
         );

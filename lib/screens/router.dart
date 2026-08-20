@@ -33,11 +33,9 @@ import 'package:mentour_web_view/screens/results/exercise/exam_exercise_result_s
 import 'package:mentour_web_view/screens/results/vocabulary/exam_vocabulary_result_screen.dart';
 import 'package:mentour_web_view/screens/vocabulary/sub_screens/learn_words/learn_words_screen.dart';
 import 'package:mentour_web_view/screens/vocabulary/sub_screens/quiz_words/quiz_words_screen.dart';
-import 'package:mentour_web_view/screens/splash/splash_screen.dart';
 import 'package:mentour_web_view/screens/writing/writing_task_screen.dart';
 
 class AppRouterNames {
-  static const String splashRoute = '/splash';
   static const String coursesRoute = '/courses';
   static const String groupsRoute = '/groups';
   static const String homeRoute = '/home';
@@ -83,8 +81,8 @@ class AppRouter {
   static Route<dynamic> generateRoute(RouteSettings settings) {
     Map<String, dynamic>? getArgs() =>
         settings.arguments is Map<String, dynamic>
-        ? settings.arguments as Map<String, dynamic>
-        : null;
+            ? settings.arguments as Map<String, dynamic>
+            : null;
 
     Route<dynamic> missingArgs(String routeName) =>
         MaterialPageRoute(builder: (_) => HomeScreen());
@@ -240,10 +238,6 @@ class AppRouter {
       case AppRouterNames.coursesRoute:
         return MaterialPageRoute(builder: (_) => CoursesScreen());
       case '/':
-      case AppRouterNames.splashRoute:
-        return MaterialPageRoute(
-          builder: (_) => const SplashScreen(),
-        );
       case AppRouterNames.homeRoute:
         return MaterialPageRoute(
           builder: (_) => const HomeScreen(fromInitialRoute: true),
@@ -313,7 +307,7 @@ class AppRouter {
         if (args == null) return missingArgs(settings.name ?? '');
         return MaterialPageRoute(
           settings:
-              settings, // needed for ModalRoute.of(context)?.settings.name
+          settings, // needed for ModalRoute.of(context)?.settings.name
           builder: (_) => ViewExamSectionsScreen(
             homework: args["homework"],
             groupUuid: args["groupUuid"],
@@ -324,7 +318,7 @@ class AppRouter {
         if (args == null) return missingArgs(settings.name ?? '');
         return MaterialPageRoute(
           settings:
-              settings, // needed for ModalRoute.of(context)?.settings.name
+          settings, // needed for ModalRoute.of(context)?.settings.name
           builder: (_) => ExamTasksScreen(
             unitUuid: args["unitUuid"],
             sectionType: args["sectionType"],

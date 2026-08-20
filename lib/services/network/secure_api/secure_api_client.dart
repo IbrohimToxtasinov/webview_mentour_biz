@@ -22,13 +22,13 @@ class SecureApiClient {
   final List<Completer<String>> _refreshQueue = [];
 
   SecureApiClient()
-    : dio = Dio(
-        BaseOptions(
-          baseUrl: AppConstants.baseUrl,
-          connectTimeout: const Duration(seconds: 30),
-          receiveTimeout: const Duration(seconds: 30),
-        ),
-      ) {
+      : dio = Dio(
+    BaseOptions(
+      baseUrl: AppConstants.baseUrl,
+      connectTimeout: const Duration(seconds: 30),
+      receiveTimeout: const Duration(seconds: 30),
+    ),
+  ) {
     _refreshDio = Dio(
       BaseOptions(
         baseUrl: AppConstants.baseUrl,
@@ -45,9 +45,9 @@ class SecureApiClient {
   }
 
   Future<void> _onRequest(
-    RequestOptions options,
-    RequestInterceptorHandler handler,
-  ) async {
+      RequestOptions options,
+      RequestInterceptorHandler handler,
+      ) async {
     await StorageRepository.getInstance();
 
     final accessToken = await SecureStorage.get(key: 'accessToken');
@@ -64,9 +64,9 @@ class SecureApiClient {
   }
 
   Future<void> _onError(
-    DioException error,
-    ErrorInterceptorHandler handler,
-  ) async {
+      DioException error,
+      ErrorInterceptorHandler handler,
+      ) async {
     final statusCode = error.response?.statusCode;
 
     if (error.requestOptions.path.contains('/api/v1/auth/token/refresh')) {
@@ -169,9 +169,9 @@ class SecureApiClient {
   }
 
   Future<Response<dynamic>> _retryRequest(
-    RequestOptions original,
-    String newAccessToken,
-  ) {
+      RequestOptions original,
+      String newAccessToken,
+      ) {
     final options = original.copyWith(
       headers: {...original.headers, 'Authorization': 'Bearer $newAccessToken'},
     );
@@ -193,14 +193,14 @@ class SecureApiClient {
     await SecureStorage.deleteAll();
 
     navigatorKey.currentState
-        ?.pushNamedAndRemoveUntil(AppRouterNames.splashRoute, (route) => false)
+        ?.pushNamedAndRemoveUntil(AppRouterNames.homeRoute, (route) => false)
         .then((_) {
-          final context = navigatorKey.currentContext;
-          if (context != null && context.mounted) {
-            context.read<NavigatorBloc>().add(ChangePageEvent(pageIndex: 0));
-          }
-          _isNavigatingToLogin = false;
-        });
+      final context = navigatorKey.currentContext;
+      if (context != null && context.mounted) {
+        context.read<NavigatorBloc>().add(ChangePageEvent(pageIndex: 0));
+      }
+      _isNavigatingToLogin = false;
+    });
 
     debugPrint('🚪 Session expired — navigating to Sign-In.');
   }
