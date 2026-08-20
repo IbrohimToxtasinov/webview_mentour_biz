@@ -134,8 +134,8 @@ class _HomeScreenState extends State<HomeScreen> {
                             }
                           },
                         ),
-                        // ActiveHomeworkWidget(),
-                        // const SizedBox(height: 12),
+                        ActiveHomeworkWidget(),
+                        const SizedBox(height: 12),
                       ],
                     ),
                   ),

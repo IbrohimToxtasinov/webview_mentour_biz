@@ -33,8 +33,6 @@ class _SplashScreenState extends State<SplashScreen> {
   Future<void> _handleAutoSignIn() async {
     try {
       final prefs = await SharedPreferences.getInstance();
-      prefs.setString("ext_username", "998903530048");
-      prefs.setString("ext_password", "FivePlus5+");
 
       final extUsername = prefs.getString('ext_username');
       final extPassword = prefs.getString('ext_password');
