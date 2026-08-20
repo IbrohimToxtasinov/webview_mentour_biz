@@ -70,9 +70,9 @@ class _HomeScreenState extends State<HomeScreen> {
                                 crossAxisAlignment:
                                     CrossAxisAlignment.start,
                                 children: [
-                                  // MainHeaderWidget(
-                                  //   profile: state.profileModel,
-                                  // ),
+                                  MainHeaderWidget(
+                                    profile: state.profileModel,
+                                  ),
                                   const SizedBox(height: 12),
                                   LearningCenterWidget(
                                     school: state.profileModel.schoolInfo,
