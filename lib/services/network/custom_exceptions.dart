@@ -1,0 +1,102 @@
+import 'package:dio/dio.dart';
+
+class BadRequestException extends DioException {
+  BadRequestException(RequestOptions r) : super(requestOptions: r);
+
+  @override
+  String toString() {
+    return 'Invalid request';
+  }
+}
+
+class InternalServerErrorException extends DioException {
+  InternalServerErrorException(RequestOptions r) : super(requestOptions: r);
+
+  @override
+  String toString() {
+    return 'Unknown error occurred, please try again later.';
+  }
+}
+
+class ConflictException extends DioException {
+  ConflictException(RequestOptions r) : super(requestOptions: r);
+
+  @override
+  String toString() {
+    return 'Conflict occurred';
+  }
+}
+
+class UnauthorizedException extends DioException {
+  UnauthorizedException(RequestOptions r) : super(requestOptions: r);
+
+  @override
+  String toString() {
+    return 'Access denied';
+  }
+}
+
+class NotFoundException extends DioException {
+  NotFoundException(RequestOptions r) : super(requestOptions: r);
+
+  @override
+  String toString() {
+    return 'The requested information could not be found';
+  }
+}
+
+class NoInternetConnectionException extends DioException {
+  NoInternetConnectionException(RequestOptions r) : super(requestOptions: r);
+
+  @override
+  String toString() {
+    return 'No internet connection detected, please try again.';
+  }
+}
+
+class DeadlineExceededException extends DioException {
+  DeadlineExceededException(RequestOptions r) : super(requestOptions: r);
+
+  @override
+  String toString() {
+    return 'The connection has timed out, please try again.';
+  }
+}
+
+class ReceiveTimeOutException extends DioException {
+  ReceiveTimeOutException(RequestOptions r) : super(requestOptions: r);
+
+  String myError = "ReceiveTimeOutException";
+
+  @override
+  String toString() {
+    return 'The ReceiveTimeOutException, please try again.';
+  }
+}
+
+class CancelException extends DioException {
+  CancelException(RequestOptions r) : super(requestOptions: r);
+
+  @override
+  String toString() {
+    return 'Unknown exception, please try again.';
+  }
+}
+
+class BadCertificateException extends DioException {
+  BadCertificateException(RequestOptions r) : super(requestOptions: r);
+
+  @override
+  String toString() {
+    return 'Incorrect Certificate, please try again.';
+  }
+}
+
+class UnknownException extends DioException {
+  UnknownException(RequestOptions r) : super(requestOptions: r);
+
+  @override
+  String toString() {
+    return 'Unknown exception, please try again.';
+  }
+}

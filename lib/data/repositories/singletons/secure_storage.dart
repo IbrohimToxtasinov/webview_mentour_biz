@@ -1,0 +1,43 @@
+import 'package:flutter/foundation.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+class SecureStorage {
+  static const _storage = FlutterSecureStorage();
+
+  static Future<void> save({required String key, required String value}) async {
+    if (kIsWeb) {
+      final prefs = await SharedPreferences.getInstance();
+      await prefs.setString(key, value);
+    } else {
+      await _storage.write(key: key, value: value);
+    }
+  }
+
+  static Future<String?> get({required String key}) async {
+    if (kIsWeb) {
+      final prefs = await SharedPreferences.getInstance();
+      return prefs.getString(key);
+    } else {
+      return await _storage.read(key: key);
+    }
+  }
+
+  static Future<void> delete({required String key}) async {
+    if (kIsWeb) {
+      final prefs = await SharedPreferences.getInstance();
+      await prefs.remove(key);
+    } else {
+      await _storage.delete(key: key);
+    }
+  }
+
+  static Future<void> deleteAll() async {
+    if (kIsWeb) {
+      final prefs = await SharedPreferences.getInstance();
+      await prefs.clear();
+    } else {
+      await _storage.deleteAll();
+    }
+  }
+}

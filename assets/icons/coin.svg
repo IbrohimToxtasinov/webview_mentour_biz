@@ -1,0 +1,44 @@
+<svg width="200" height="200" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <!-- Soft Gold Gradient for Face -->
+        <linearGradient id="softGold" x1="50%" y1="0%" x2="50%" y2="100%">
+            <stop offset="0%" stop-color="#FFF59D"/> <!-- Creamy Yellow -->
+            <stop offset="100%" stop-color="#FBC02D"/> <!-- Soft Gold -->
+        </linearGradient>
+
+        <!-- Gradient for the Rim (slightly darker) -->
+        <linearGradient id="rimGold" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="#FFEE58"/>
+            <stop offset="100%" stop-color="#F57F17"/>
+        </linearGradient>
+
+        <!-- Shadow for the "M" to make it look stamped/engraved -->
+        <filter id="insetShadow">
+            <feOffset dx="0" dy="1" />
+            <feGaussianBlur stdDeviation="0.5" result="offset-blur" />
+            <feComposite operator="out" in="SourceGraphic" in2="offset-blur" result="inverse" />
+            <feFlood flood-color="#F57F17" flood-opacity="1" result="color" />
+            <feComposite operator="in" in="color" in2="inverse" result="shadow" />
+            <feComposite operator="over" in="shadow" in2="SourceGraphic" />
+        </filter>
+    </defs>
+
+    <!-- 1. Outer Rim (Rounded & Soft) -->
+    <circle cx="50" cy="50" r="48" fill="url(#rimGold)" />
+
+    <!-- 2. Inner Face -->
+    <circle cx="50" cy="50" r="42" fill="url(#softGold)" stroke="#F9A825" stroke-width="0.5"/>
+
+    <!-- 3. Decorative Ridge (The little ring inside) -->
+    <circle cx="50" cy="50" r="38" fill="none" stroke="#FBC02D" stroke-width="1.5" stroke-dasharray="2,1" opacity="0.5"/>
+
+    <!-- 4. The "M" (Rounded and Stamped) -->
+    <!-- Using a path for 'M' to ensure it works without font files, centered & rounded -->
+    <path d="M32 62 L32 38 Q32 32 38 32 L38 32 Q42 32 44 38 L50 50 L56 38 Q58 32 62 32 L62 32 Q68 32 68 38 L68 62 Q68 66 64 66 L64 66 Q60 66 60 62 L60 48 L53 60 Q51 63 49 63 Q47 63 45 60 L38 48 L38 62 Q38 66 34 66 L34 66 Q30 66 30 62 Z"
+        fill="#F57F17"
+        filter="url(#insetShadow)"
+        opacity="0.9"/>
+
+    <!-- 5. Soft Gloss/Shine (Top Left) -->
+    <path d="M25 25 Q50 10 75 25" stroke="white" stroke-width="3" stroke-linecap="round" fill="none" opacity="0.4" filter="blur(1px)"/>
+</svg>

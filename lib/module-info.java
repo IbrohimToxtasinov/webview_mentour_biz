@@ -1,0 +1,2 @@
+module mentour.web.view {
+}
